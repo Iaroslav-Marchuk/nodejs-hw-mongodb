@@ -12,10 +12,13 @@ import { validateBody } from '../middlewares/validateBody.js';
 import {
   updateValidateContactSchema,
   validateContactSchema,
-} from '../validation/students.js';
+} from '../validation/contactsValidation.js';
 import { isValidId } from '../middlewares/isValidId.js';
+import { authenticate } from '../middlewares/authenticate.js';
 
 const router = Router();
+
+router.use(authenticate);
 
 router.get('/', ctrlWrapper(getContactsController));
 
