@@ -17,6 +17,11 @@ const contactSchema = new mongoose.Schema(
       required: false,
     },
 
+    photo: {
+      type: String,
+      default: null,
+    },
+
     isFavourite: {
       type: Boolean,
       required: false,
