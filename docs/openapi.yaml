@@ -13,7 +13,8 @@ tags:
     description: Auth operations.
 servers:
   - url: http://localhost:3000
-  - url: http://nodejs-hw-mongodb-6-6e80.onrender.com
+  - url: https://nodejs-hw-mongodb-7-8ohl.onrender.com
+
 paths:
   /auth/login:
     post:
