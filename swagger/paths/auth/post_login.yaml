@@ -1,0 +1,71 @@
+tags:
+  - Auth
+summary: User login
+operationId: loginUser
+description: 'login user with email and password'
+security: []
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - email
+          - password
+        properties:
+          email:
+            description: "User's email"
+            type: string
+            format: email
+            example: 'user@some.net'
+          password:
+            description: "User's password"
+            type: string
+            example: 'qwerty'
+responses:
+  '200':
+    description: 'User login'
+    headers:
+      Set-Cookie:
+        description: 'Cookies set after successful login'
+        schema:
+          type: array
+          items:
+            type: string
+          example:
+            - 'refreshToken=O250vTTCCs44EDFNo6kkcITmoQSX7oSv2Qm0lHt%2B; Path=/; Expires=Mon, 08 Sep 2025 12:55:47 GMT; HttpOnly'
+            - 'sessionId=j%3A%2268974553b7e801669e7b6d50%22; Path=/; Expires=Sat, 09 Aug 2025 13:10:47 GMT; HttpOnly'
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: 'User successfully logged in'
+            data:
+              type: object
+              required:
+                - accessToken
+              properties:
+                accessToken:
+                  type: string
+                  example: 'W+C9llkYIvlvYnTVbDZigh4v/1k0E3eLyEbhhz9H'
+  '400':
+    $ref: '../../components/responses/400.yaml'
+
+  '401':
+    $ref: '../../components/responses/401.yaml'
+
+  '404':
+    $ref: '../../components/responses/404.yaml'
+
+  '500':
+    $ref: '../../components/responses/500.yaml'

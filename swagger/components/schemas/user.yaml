@@ -1,0 +1,29 @@
+type: object
+required:
+  - userId
+  - name
+  - email
+  - createdAt
+  - updatedAt
+
+properties:
+  userId:
+    description: "User's id"
+    type: string
+    example: '65e4decdd286b30065d54af9'
+  name:
+    description: "User's name"
+    type: string
+    example: 'Bruce Lee'
+  email:
+    description: "User's email"
+    type: string
+    example: 'user@some.net'
+  createdAt:
+    type: string
+    format: date-time
+    example: 2025-07-21T17:27:59.621+00:00
+  updatedAt:
+    type: string
+    format: date-time
+    example: 2025-07-21T17:27:59.621+00:00

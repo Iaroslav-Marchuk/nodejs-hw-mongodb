@@ -1,0 +1,55 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Contacts APP
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: This is a documentation of Contacts APP
+tags:
+  - name: Contacts
+    description: Operations about contacts.
+  - name: Auth
+    description: Auth operations.
+servers:
+  - url: http://localhost:3000
+  - url: http://nodejs-hw-mongodb-6-6e80.onrender.com
+paths:
+  /auth/login:
+    post:
+      $ref: '../swagger/paths/auth/post_login.yaml'
+  /auth/logout:
+    post:
+      $ref: '../swagger/paths/auth/post_logout.yaml'
+  /auth/refresh:
+    post:
+      $ref: '../swagger/paths/auth/post_refresh_session.yaml'
+  /auth/register:
+    post:
+      $ref: '../swagger/paths/auth/post_register.yaml'
+  /auth/reset-pwd:
+    post:
+      $ref: '../swagger/paths/auth/post_reset_pwd.yaml'
+  /auth/send-reset-email:
+    post:
+      $ref: '../swagger/paths/auth/post_send_reset_email.yaml'
+
+  /contacts:
+    get:
+      $ref: '../swagger/paths/contacts/get.yaml'
+    post:
+      $ref: '../swagger/paths/contacts/post.yaml'
+
+  /contacts/{contactId}:
+    delete:
+      $ref: '../swagger/paths/contacts/{contactId}/delete.yaml'
+    get:
+      $ref: '../swagger/paths/contacts/{contactId}/get.yaml'
+    patch:
+      $ref: '../swagger/paths/contacts/{contactId}/patch.yaml'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

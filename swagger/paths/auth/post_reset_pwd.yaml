@@ -1,0 +1,57 @@
+tags:
+  - Auth
+summary: 'Reset password'
+operationId: resetPassword
+description: 'Verify reset token, update password and delete existing user session.'
+security: []
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - token
+          - password
+        properties:
+          token:
+            description: "User's token to reset password"
+            type: string
+            example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODhiZDkxOGE1ZjhlNTBjYjA2OTIwMDAiLCJlbWFpbCI6ImphcmlrXzEzYUB1a3IubmV0IiwiaWF0IjoxNzU0NzQ0MDY4LCJleHAiOjE3NTQ3NDQzNjh9.lEK2tXPjlK7HV70vnZJNISX89U4H7J-HW1utN628y7Y'
+          password:
+            description: "New user's password"
+            type: string
+            example: 'qwerty'
+responses:
+  '200':
+    description: 'Password reset'
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: 'Password has been successfully reset.'
+            data:
+              type: object
+              description: 'Empty object'
+              example: {}
+
+  '400':
+    $ref: '../../components/responses/400.yaml'
+
+  '401':
+    $ref: '../../components/responses/401.yaml'
+
+  '404':
+    $ref: '../../components/responses/404.yaml'
+
+  '500':
+    $ref: '../../components/responses/500.yaml'

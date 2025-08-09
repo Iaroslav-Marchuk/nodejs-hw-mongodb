@@ -31,7 +31,7 @@ export const loginUserService = async (payload) => {
   const user = await UserCollection.findOne({ email: payload.email });
 
   if (!user) {
-    throw createHttpError(401, 'User not found!');
+    throw createHttpError(404, 'User not found!');
   }
 
   const isEqual = await bcrypt.compare(payload.password, user.password);
@@ -64,7 +64,7 @@ export const refreshUserSessionService = async ({
   });
 
   if (!session) {
-    throw createHttpError(401, 'Session not found');
+    throw createHttpError(404, 'Session not found');
   }
 
   const isSessionTokenExpired =

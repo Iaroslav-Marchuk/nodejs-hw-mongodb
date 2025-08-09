@@ -1,0 +1,21 @@
+tags:
+  - Auth
+summary: User logout
+operationId: logoutUser
+description: 'Logout user. SessionId is used to delete the session. Also removes cookies from the client.'
+security: []
+responses:
+  '204':
+    description: 'User successfully logged out'
+    headers:
+      Set-Cookie:
+        description: 'Cookies cleared after successful logout.'
+        schema:
+          type: array
+          items:
+            type: string
+          example:
+            - 'refreshToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly'
+            - 'sessionId=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly'
+  '500':
+    $ref: '../../components/responses/500.yaml'
